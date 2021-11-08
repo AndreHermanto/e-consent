@@ -1,0 +1,11 @@
+FROM node:15
+
+WORKDIR /gene-trustee/ui
+
+COPY package*.json ./
+
+RUN npm install
+
+EXPOSE 9002
+
+CMD ["npm", "run", "start-client"]

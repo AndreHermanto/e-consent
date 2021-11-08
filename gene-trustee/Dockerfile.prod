@@ -1,0 +1,16 @@
+FROM node:15
+WORKDIR /gene-trustee
+COPY ./backend/ ./backend
+COPY ./frontend/ ./frontend
+
+WORKDIR /gene-trustee/backend
+RUN npm i && npm i sqlite3 && \
+  npx sequelize-cli db:migrate && \
+  npx sequelize-cli db:seed:all && \
+  npm -s test
+
+WORKDIR /gene-trustee/frontend
+RUN npm i && npm run build
+
+EXPOSE 3002
+CMD ["npm", "start"]

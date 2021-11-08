@@ -1,0 +1,14 @@
+FROM node:15
+WORKDIR /clinical
+COPY ./backend/ ./backend
+COPY ./frontend/ ./frontend
+
+WORKDIR /clinical/backend
+RUN npm i && npm i sqlite3
+RUN npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all && npm -s test
+
+WORKDIR /clinical/frontend
+RUN npm i && npm run build
+
+EXPOSE 3001
+CMD ["npm", "start"]

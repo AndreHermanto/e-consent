@@ -1,0 +1,11 @@
+.DS_Store
+/Student Certificate.pdf
+/test.csv
+node_modules/
+*.db
+gene-trustee/backend/res.csv
+gene-trustee/frontend/.env
+clinical/frontend/.env
+clinical/backend/.env
+gene-trustee/backend/.env
+participant/backend/.env

@@ -1,0 +1,22 @@
+services:
+  dev-ui:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./frontend
+    ports:
+      - 9001:9001
+    container_name: dev-clinical-ui
+    volumes:
+      - ./frontend:/clinical/ui
+      - /clinical/ui/node_modules
+    stdin_open: true
+  dev-api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./backend
+    ports:
+      - 3001:3001
+    container_name: dev-clinical-api
+    volumes:
+      - ./backend:/clinical/api
+      - /clinical/api/node_modules

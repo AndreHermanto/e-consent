@@ -1,0 +1,15 @@
+FROM node:15-alpine
+
+WORKDIR /consent
+COPY ./backend/ ./backend
+COPY ./frontend/ ./frontend
+
+WORKDIR /consent/backend
+RUN npm install
+RUN npm -s test
+
+WORKDIR /consent/frontend
+RUN npm install 
+RUN npm run build
+
+CMD ["npm", "start"]

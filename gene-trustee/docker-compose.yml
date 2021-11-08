@@ -1,0 +1,22 @@
+services:
+  dev-ui:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./frontend
+    ports:
+      - 9002:9002
+    container_name: dev-gt-ui
+    volumes:
+      - ./frontend:/gene-trustee/ui
+      - /gene-trustee/ui/node_modules
+    stdin_open: true
+  dev-api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./backend
+    ports:
+      - 3002:3002
+    container_name: dev-gt-api
+    volumes:
+      - ./backend:/gene-trustee/api
+      - /gene-trustee/api/node_modules

@@ -1,0 +1,22 @@
+services:
+  dev-ui:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./frontend
+    ports:
+      - 9000:9000
+    container_name: dev-consent-ui
+    volumes:
+      - ./frontend:/e-consent/ui
+      - /e-consent/ui/node_modules
+    stdin_open: true
+  dev-api:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./backend
+    ports:
+      - 3000:3000
+    container_name: dev-consent-api
+    volumes:
+      - ./backend:/e-consent/api
+      - /e-consent/api/node_modules
